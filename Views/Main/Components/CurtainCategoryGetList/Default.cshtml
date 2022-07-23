@@ -1,0 +1,6 @@
+﻿@model IEnumerable<HanPerde.Models.CategoryCurtain>
+
+@foreach (var item in Model)
+{
+    <li><a href="/Main/CategoryDetailsCurtain/@item.CategoryId">@item.CategoryName</a></li>
+}

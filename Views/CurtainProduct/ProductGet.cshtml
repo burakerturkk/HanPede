@@ -1,0 +1,31 @@
+﻿@model HanPerde.Models.CurtainProduct
+@{
+    ViewData["Title"] = "ProductGet";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<br />
+<h2>Ürün Güncelleme Sayfası</h2>
+@using (Html.BeginForm("UpdateProduct", "CurtainProduct", FormMethod.Post))
+{
+    <br />
+    @Html.Label("Ürün Id")
+    @Html.TextBoxFor(x => x.ProductId, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.Label("Ürün İsmi")
+    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ProductName, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Ürün Resmi")
+    @Html.TextBoxFor(x => x.ProductImageUrl, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori")
+    @*@Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })*@
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+
+}
+
+
+

@@ -1,0 +1,19 @@
+﻿
+@model HanPerde.Models.CategoryCurtain
+
+@{
+    ViewData["Title"] = "CategoryAdd";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h1>Kategori Ekleme Sayfası</h1>
+<br />
+@using (Html.BeginForm("CategoryAdd", "CurtainCategory", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.CategoryName)
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+
+} 

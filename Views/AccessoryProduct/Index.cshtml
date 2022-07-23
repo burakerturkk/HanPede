@@ -1,0 +1,53 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model IPagedList<HanPerde.Models.AccessoryProduct>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h1>Aksesuar İşlemleri</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>İsim</th>
+        <th>Ürün Resmi</th>
+        <th>Kategori ID</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ProductId</td>
+            <td>@x.ProductName</td>
+            <td>@x.ProductImageUrl</td>
+             <td>@x.CategoryId</td>
+            <td><a href="/AccessoryProduct/DeleteProduct/@x.ProductId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/AccessoryProduct/ProductGet/@x.ProductId" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<div class="pull-right">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index",
+       new
+            {
+                page
+
+     }),
+     new PagedListRenderOptions
+     {
+         LiElementClasses = new string[] { "page-item" },
+         PageClasses = new string[] { "page-link" },
+         Display = PagedListDisplayMode.IfNeeded
+
+          })
+</div>
+@*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
+<a href="/AccessoryProduct/AddProduct" class="btn btn-primary">Yeni Ürün Ekle</a>
+

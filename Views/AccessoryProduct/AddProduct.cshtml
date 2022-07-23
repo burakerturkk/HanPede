@@ -1,0 +1,24 @@
+﻿@model HanPerde.Models.AccessoryProduct
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<br />
+<h2>Ürün Ekleme Sayfası</h2>
+@using (Html.BeginForm("AddProduct", "AccessoryProduct", FormMethod.Post))
+{
+    <br />
+    @Html.Label("Ürün İsmi")
+    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ProductName, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Ürün Resmi")
+    @Html.TextBoxFor(x => x.ProductImageUrl, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+
+}
+

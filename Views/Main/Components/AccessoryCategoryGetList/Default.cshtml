@@ -1,0 +1,7 @@
+﻿
+@model IEnumerable<HanPerde.Models.CategoryAccessory>
+
+@foreach (var item in Model)
+{
+    <li><a href="/Main/CategoryDetailsAccessory/@item.CategoryId">@item.CategoryName</a></li>
+}
